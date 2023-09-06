@@ -8,14 +8,16 @@ public class CountriesService : ICountriesService
 {
     //private field
     private readonly List<Country> _countries;
+    private readonly PesonsDbContext _pesonsDbContext;
 
     //constructor
-    public CountriesService()
+    public CountriesService(PesonsDbContext pesonsDbContext)
     {
         _countries = new List<Country>();
+        _pesonsDbContext = pesonsDbContext;
     }
 
-    public CountryResponse AddCountry(CountryAddRequest? countryAddRequest)
+    public async Task<CountryResponse> AddCountryAsync(CountryAddRequest? countryAddRequest)
     {
 
         //Validation: countryAddRequest parameter can't be null
@@ -31,7 +33,7 @@ public class CountriesService : ICountriesService
         }
 
         //Validation: CountryName can't be duplicate
-        if (_countries.Where(temp => temp.CountryName == countryAddRequest.CountryName).Count() > 0)
+        if (_pesonsDbContext.Countries.Where(temp => temp.CountryName == countryAddRequest.CountryName).Count() > 0)
         {
             throw new ArgumentException("Given country name already exists");
         }
@@ -43,14 +45,16 @@ public class CountriesService : ICountriesService
         country.CountryID = Guid.NewGuid();
 
         //Add country object into _countries
-        _countries.Add(country);
+        _pesonsDbContext.Countries.Add(country);
+
+        await _pesonsDbContext.SaveChangesAsync();
 
         return country.ToCountryResponse();
     }
 
     public List<CountryResponse> GetAllCountries()
     {
-        return _countries.Select(country => country.ToCountryResponse()).ToList();
+        return _pesonsDbContext.Countries.Select(country => country.ToCountryResponse()).ToList();
     }
 
     public CountryResponse? GetCountryByCountryID(Guid? countryID)
@@ -58,13 +62,14 @@ public class CountriesService : ICountriesService
         if (countryID == null)
             return null;
 
-        Country? country_response_from_list = _countries.FirstOrDefault(temp => temp.CountryID == countryID);
+        Country? country_response_from_list = _pesonsDbContext.Countries.FirstOrDefault(temp => temp.CountryID == countryID);
 
         if (country_response_from_list == null)
             return null;
 
         return country_response_from_list.ToCountryResponse();
     }
+
 }
 
 

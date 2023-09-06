@@ -4,6 +4,7 @@ using ServiceContracts;
 using ServiceContracts.DTO;
 using ServiceContracts.Enums;
 using Services.Helpers;
+using Microsoft.EntityFrameworkCore;
 
 namespace Services
 {
@@ -11,14 +12,16 @@ namespace Services
         public class PersonsService : IPersonsService
         {
             //private field
-            private readonly List<Person> _persons;
+            private readonly PesonsDbContext _pesonsDbContext;
             private readonly ICountriesService _countriesService;
 
             //constructor
-            public PersonsService()
+            public PersonsService(PesonsDbContext pesonsDbContext, ICountriesService countriesService)
             {
-                _persons = new List<Person>();
-                _countriesService = new CountriesService();
+
+            _pesonsDbContext = pesonsDbContext;
+            _countriesService = countriesService;
+                
             }
 
 
@@ -47,7 +50,7 @@ namespace Services
                 person.PersonID = Guid.NewGuid();
 
                 //add person object to persons list
-                _persons.Add(person);
+                _pesonsDbContext.Persons.Add(person);
 
                 //convert the Person object into PersonResponse type
                 return ConvertPersonToPersonResponse(person);
@@ -56,7 +59,7 @@ namespace Services
 
             public List<PersonResponse> GetAllPersons()
             {
-                return _persons.Select(temp => temp.ToPersonResponse()).ToList();
+                return _pesonsDbContext.Persons.Select(temp => temp.ToPersonResponse()).ToList();
             }
 
 
@@ -65,7 +68,7 @@ namespace Services
                 if (personID == null)
                     return null;
 
-                Person? person = _persons.FirstOrDefault(temp => temp.PersonID == personID);
+                Person? person = _pesonsDbContext.Persons.FirstOrDefault(temp => temp.PersonID == personID);
                 if (person == null)
                     return null;
 
@@ -181,7 +184,7 @@ namespace Services
                 ValidationHelper.ModelValidation(personUpdateRequest);
 
                 //get matching person object to update
-                Person? matchingPerson = _persons.FirstOrDefault(temp => temp.PersonID == personUpdateRequest.PersonID);
+                Person? matchingPerson = _pesonsDbContext.Persons.FirstOrDefault(temp => temp.PersonID == personUpdateRequest.PersonID);
                 if (matchingPerson == null)
                 {
                     throw new ArgumentException("Given person id doesn't exist");
@@ -206,11 +209,14 @@ namespace Services
                     throw new ArgumentNullException(nameof(personID));
                 }
 
-                Person? person = _persons.FirstOrDefault(temp => temp.PersonID == personID);
+                Person? person = _pesonsDbContext.Persons.FirstOrDefault(temp => temp.PersonID == personID);
                 if (person == null)
                     return false;
 
-                _persons.RemoveAll(temp => temp.PersonID == personID);
+                _pesonsDbContext.Persons.Remove(person);
+
+
+            _pesonsDbContext.SaveChanges();
 
                 return true;
             }

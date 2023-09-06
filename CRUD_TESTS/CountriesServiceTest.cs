@@ -27,7 +27,7 @@ namespace CRUD_TESTS
             Assert.Throws<ArgumentNullException>(() =>
             {
                 //Act
-                _countriesService.AddCountry(request);
+                _countriesService.AddCountryAsync(request);
             });
         }
 
@@ -42,7 +42,7 @@ namespace CRUD_TESTS
             Assert.Throws<ArgumentException>(() =>
             {
                 //Act
-                _countriesService.AddCountry(request);
+                _countriesService.AddCountryAsync(request);
             });
         }
 
@@ -59,8 +59,8 @@ namespace CRUD_TESTS
             Assert.Throws<ArgumentException>(() =>
             {
                 //Act
-                _countriesService.AddCountry(request1);
-                _countriesService.AddCountry(request2);
+                _countriesService.AddCountryAsync(request1);
+                _countriesService.AddCountryAsync(request2);
             });
         }
 
@@ -73,7 +73,7 @@ namespace CRUD_TESTS
             CountryAddRequest? request = new CountryAddRequest() { CountryName = "Japan" };
 
             //Act
-            CountryResponse response = _countriesService.AddCountry(request);
+            CountryResponse response = _countriesService.AddCountryAsync(request);
             List<CountryResponse> countries_from_GetAllCountries = _countriesService.GetAllCountries();
 
             //Assert
@@ -111,7 +111,7 @@ namespace CRUD_TESTS
 
             foreach (CountryAddRequest country_request in country_request_list)
             {
-                countries_list_from_add_country.Add(_countriesService.AddCountry(country_request));
+                countries_list_from_add_country.Add(_countriesService.AddCountryAsync(country_request));
             }
 
             List<CountryResponse> actualCountryResponseList = _countriesService.GetAllCountries();
@@ -149,7 +149,7 @@ namespace CRUD_TESTS
         {
             //Arrange
             CountryAddRequest? country_add_request = new CountryAddRequest() { CountryName = "China" };
-            CountryResponse country_response_from_add = _countriesService.AddCountry(country_add_request);
+            CountryResponse country_response_from_add = _countriesService.AddCountryAsync(country_add_request);
 
             //Act
             CountryResponse? country_response_from_get = _countriesService.GetCountryByCountryID(country_response_from_add.CountryID);

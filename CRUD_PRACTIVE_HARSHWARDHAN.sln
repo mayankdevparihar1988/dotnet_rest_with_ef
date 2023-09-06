@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUD_TESTS", "CRUD_TESTS\CRUD_TESTS.csproj", "{DA04DB95-7CC4-4E0F-9585-C92D66535018}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{45037E59-8182-48A6-8A23-827219CC3B0A}"
+	ProjectSection(SolutionItems) = preProject
+		EF.md = EF.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
