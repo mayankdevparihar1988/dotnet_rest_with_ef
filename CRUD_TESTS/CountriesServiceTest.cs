@@ -2,6 +2,8 @@
 using ServiceContracts;
 using ServiceContracts.DTO;
 using Services;
+using Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace CRUD_TESTS
 {
@@ -12,37 +14,37 @@ namespace CRUD_TESTS
         //constructor
         public CountriesServiceTest()
         {
-            _countriesService = new CountriesService();
+            _countriesService = new CountriesService(new PesonsDbContext(new DbContextOptionsBuilder<PesonsDbContext>().Options));
         }
 
         #region AddCountry
         //When CountryAddRequest is null, it should throw ArgumentNullException
         [Fact]
-        public void AddCountry_NullCountry()
+        public async Task AddCountry_NullCountry()
         {
             //Arrange
             CountryAddRequest? request = null;
 
             //Assert
-            Assert.Throws<ArgumentNullException>(() =>
+            await Assert.ThrowsAsync<ArgumentNullException>(() =>
             {
                 //Act
-                _countriesService.AddCountryAsync(request);
+               return _countriesService.AddCountryAsync(request);
             });
         }
 
         //When the CountryName is null, it should throw ArgumentException
         [Fact]
-        public void AddCountry_CountryNameIsNull()
+        public async Task AddCountry_CountryNameIsNull()
         {
             //Arrange
             CountryAddRequest? request = new CountryAddRequest() { CountryName = null };
 
             //Assert
-            Assert.Throws<ArgumentException>(() =>
+            await Assert.ThrowsAsync<ArgumentException>(() =>
             {
                 //Act
-                _countriesService.AddCountryAsync(request);
+                return _countriesService.AddCountryAsync(request);
             });
         }
 
@@ -67,13 +69,13 @@ namespace CRUD_TESTS
 
         //When you supply proper country name, it should insert (add) the country to the existing list of countries
         [Fact]
-        public void AddCountry_ProperCountryDetails()
+        public async Task AddCountry_ProperCountryDetailsAsync()
         {
             //Arrange
             CountryAddRequest? request = new CountryAddRequest() { CountryName = "Japan" };
 
             //Act
-            CountryResponse response = _countriesService.AddCountryAsync(request);
+            CountryResponse response = await _countriesService.AddCountryAsync(request);
             List<CountryResponse> countries_from_GetAllCountries = _countriesService.GetAllCountries();
 
             //Assert
@@ -98,7 +100,7 @@ namespace CRUD_TESTS
         }
 
         [Fact]
-        public void GetAllCountries_AddFewCountries()
+        public async Task GetAllCountries_AddFewCountriesAsync()
         {
             //Arrange
             List<CountryAddRequest> country_request_list = new List<CountryAddRequest>() {
@@ -111,7 +113,7 @@ namespace CRUD_TESTS
 
             foreach (CountryAddRequest country_request in country_request_list)
             {
-                countries_list_from_add_country.Add(_countriesService.AddCountryAsync(country_request));
+                countries_list_from_add_country.Add(await _countriesService.AddCountryAsync(country_request));
             }
 
             List<CountryResponse> actualCountryResponseList = _countriesService.GetAllCountries();
@@ -145,11 +147,11 @@ namespace CRUD_TESTS
 
         [Fact]
         //If we supply a valid country id, it should return the matching country details as CountryResponse object
-        public void GetCountryByCountryID_ValidCountryID()
+        public async Task GetCountryByCountryID_ValidCountryIDAsync()
         {
             //Arrange
             CountryAddRequest? country_add_request = new CountryAddRequest() { CountryName = "China" };
-            CountryResponse country_response_from_add = _countriesService.AddCountryAsync(country_add_request);
+            CountryResponse country_response_from_add = await _countriesService.AddCountryAsync(country_add_request);
 
             //Act
             CountryResponse? country_response_from_get = _countriesService.GetCountryByCountryID(country_response_from_add.CountryID);

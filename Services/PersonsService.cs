@@ -199,6 +199,7 @@ namespace Services
                 matchingPerson.Address = personUpdateRequest.Address;
                 matchingPerson.ReceiveNewsLetters = personUpdateRequest.ReceiveNewsLetters;
 
+                _pesonsDbContext.SaveChanges();
                 return matchingPerson.ToPersonResponse();
             }
 

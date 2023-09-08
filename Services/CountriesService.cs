@@ -7,13 +7,12 @@ namespace Services;
 public class CountriesService : ICountriesService
 {
     //private field
-    private readonly List<Country> _countries;
     private readonly PesonsDbContext _pesonsDbContext;
 
     //constructor
     public CountriesService(PesonsDbContext pesonsDbContext)
     {
-        _countries = new List<Country>();
+       
         _pesonsDbContext = pesonsDbContext;
     }
 
