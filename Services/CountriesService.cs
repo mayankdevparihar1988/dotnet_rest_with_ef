@@ -1,6 +1,7 @@
 ﻿using Entity;
 using ServiceContracts;
 using ServiceContracts.DTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace Services;
 
@@ -51,17 +52,17 @@ public class CountriesService : ICountriesService
         return country.ToCountryResponse();
     }
 
-    public List<CountryResponse> GetAllCountries()
+    public async Task<List<CountryResponse>> GetAllCountries()
     {
-        return _pesonsDbContext.Countries.Select(country => country.ToCountryResponse()).ToList();
+        return  await _pesonsDbContext.Countries.Select(country => country.ToCountryResponse()).ToListAsync();
     }
 
-    public CountryResponse? GetCountryByCountryID(Guid? countryID)
+    public async Task<CountryResponse?> GetCountryByCountryID(Guid? countryID)
     {
         if (countryID == null)
             return null;
 
-        Country? country_response_from_list = _pesonsDbContext.Countries.FirstOrDefault(temp => temp.CountryID == countryID);
+        Country? country_response_from_list = await _pesonsDbContext.Countries.FirstOrDefaultAsync(temp => temp.CountryID == countryID);
 
         if (country_response_from_list == null)
             return null;

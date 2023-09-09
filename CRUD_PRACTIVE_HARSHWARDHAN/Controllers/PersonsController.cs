@@ -23,39 +23,39 @@ namespace CRUD_PRACTIVE_HARSHWARDHAN.Controllers
        
         // GET: api/values
         [HttpGet]
-        public ActionResult<List<PersonResponse>> Get()
+        public async Task<ActionResult<List<PersonResponse>>> Get()
         {
-            return _personService.GetAllPersons();
+            return await _personService.GetAllPersons();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<PersonResponse?> Get(Guid id)
+        public async Task<ActionResult<PersonResponse?>> Get(Guid id)
         {
-            return _personService.GetPersonByPersonID(id);
+            return await _personService.GetPersonByPersonID(id);
         }
 
         // POST api/values
         [HttpPost]
-        public ActionResult<PersonResponse?> Post([FromBody] PersonAddRequest personAddRequest)
+        public async Task<ActionResult<PersonResponse?>> Post([FromBody] PersonAddRequest personAddRequest)
         {
-            return _personService.AddPerson(personAddRequest);
+            return await _personService.AddPerson(personAddRequest);
         }
 
         // PUT api/values/5
         [HttpPut]
-        public ActionResult<PersonResponse?> Put([FromBody] PersonUpdateRequest personUpdateRequest)
+        public async Task<ActionResult<PersonResponse?>> Put([FromBody] PersonUpdateRequest personUpdateRequest)
         {
 
-            return _personService.UpdatePerson(personUpdateRequest);
+            return await _personService.UpdatePerson(personUpdateRequest);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public bool Delete(Guid id)
+        public async Task<bool> Delete(Guid id)
         {
 
-            return _personService.DeletePerson(id);
+            return await _personService.DeletePerson(id);
         }
     }
 }

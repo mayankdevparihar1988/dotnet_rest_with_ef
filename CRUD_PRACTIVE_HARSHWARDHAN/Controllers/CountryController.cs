@@ -23,16 +23,16 @@ namespace CRUD_PRACTIVE_HARSHWARDHAN.Controllers
 
         // GET: api/values
         [HttpGet]
-        public ActionResult<List<CountryResponse>> Get()
+        public async Task<ActionResult<List<CountryResponse>>> Get()
         {
-           return _countriesService.GetAllCountries();
+           return await _countriesService.GetAllCountries();
         }
 
         // GET api/values/5
         [HttpGet("{countryGuid}")]
-        public ActionResult<CountryResponse?> Get(Guid countryGuid)
+        public async Task<ActionResult<CountryResponse?>> Get(Guid countryGuid)
         {
-            return _countriesService.GetCountryByCountryID(countryGuid);
+            return await _countriesService.GetCountryByCountryID(countryGuid);
         }
 
         // POST api/values

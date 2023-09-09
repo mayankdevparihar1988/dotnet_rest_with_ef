@@ -18,7 +18,7 @@ public interface ICountriesService
     /// Returns all countries from the list
     /// </summary>
     /// <returns>All countries from the list as List of CountryResponse</CountryResponse></returns>
-    List<CountryResponse> GetAllCountries();
+    Task<List<CountryResponse>> GetAllCountries();
 
 
     /// <summary>
@@ -26,6 +26,6 @@ public interface ICountriesService
     /// </summary>
     /// <param name="countryID">CountryID (guid) to search</param>
     /// <returns>Matching country as CountryResponse object</returns>
-    CountryResponse? GetCountryByCountryID(Guid? countryID);
+    Task<CountryResponse?> GetCountryByCountryID(Guid? countryID);
 }
 
