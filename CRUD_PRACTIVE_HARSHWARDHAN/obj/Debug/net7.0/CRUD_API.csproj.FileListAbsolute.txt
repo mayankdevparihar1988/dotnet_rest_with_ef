@@ -82,3 +82,4 @@
 /Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/CRUD_PRACTIVE_HARSHWARDHAN/obj/Debug/net7.0/CRUD_API.pdb
 /Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/CRUD_PRACTIVE_HARSHWARDHAN/obj/Debug/net7.0/CRUD_API.genruntimeconfig.cache
 /Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/CRUD_PRACTIVE_HARSHWARDHAN/obj/Debug/net7.0/ref/CRUD_API.dll
+/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/CRUD_PRACTIVE_HARSHWARDHAN/bin/Debug/net7.0/CsvHelper.dll
