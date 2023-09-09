@@ -24,11 +24,13 @@ namespace Services
                 
             }
 
+        
 
-            private PersonResponse ConvertPersonToPersonResponse(Person person)
+
+        private PersonResponse ConvertPersonToPersonResponse(Person person)
             {
                 PersonResponse personResponse = person.ToPersonResponse();
-                personResponse.Country = _countriesService.GetCountryByCountryID(person.CountryID)?.CountryName;
+                personResponse.Country = person.Country?.CountryName;
                 return personResponse;
             }
 
@@ -49,17 +51,30 @@ namespace Services
                 //generate PersonID
                 person.PersonID = Guid.NewGuid();
 
-                //add person object to persons list
-                _pesonsDbContext.Persons.Add(person);
+            //add person object to persons list
+             _pesonsDbContext.Persons.Add(person);
+             _pesonsDbContext.SaveChanges();
 
-                //convert the Person object into PersonResponse type
-                return ConvertPersonToPersonResponse(person);
-            }
+            // USING STORED PROCEDURE
+            //_pesonsDbContext.sp_InsertPerson(person);
+
+            //convert the Person object into PersonResponse type
+            return ConvertPersonToPersonResponse(person);
+        }
 
 
             public List<PersonResponse> GetAllPersons()
             {
-                return _pesonsDbContext.Persons.Select(temp => temp.ToPersonResponse()).ToList();
+
+            // By Default Country object is null
+            // var persons = _pesonsDbContext.Persons.ToList();
+
+            // Include Countries
+
+            var persons = _pesonsDbContext.Persons.Include("Country").ToList();
+
+            return persons.Select(person => ConvertPersonToPersonResponse(person)).ToList();
+           // return _pesonsDbContext.sp_GetAllPersons().Select(person => ConvertPersonToPersonResponse(person)).ToList();
             }
 
 

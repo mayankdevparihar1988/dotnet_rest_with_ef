@@ -4,6 +4,7 @@ using Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entity.Migrations
 {
     [DbContext(typeof(PesonsDbContext))]
-    partial class PesonsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230908075751_GetAllPersons")]
+    partial class GetAllPersons
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,13 +32,9 @@ namespace Entity.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CountryName")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CountryID");
-
-                    b.HasIndex("CountryName")
-                        .IsUnique()
-                        .HasFilter("[CountryName] IS NOT NULL");
 
                     b.ToTable("Countries", (string)null);
 
@@ -78,7 +77,7 @@ namespace Entity.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<Guid?>("CountryID")
-                        .HasMaxLength(100)
+                        .HasMaxLength(64)
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DateOfBirth")
@@ -97,12 +96,6 @@ namespace Entity.Migrations
 
                     b.Property<bool>("ReceiveNewsLetters")
                         .HasColumnType("bit");
-
-                    b.Property<string>("TIN")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("varchar(10)")
-                        .HasDefaultValue("ABISD882")
-                        .HasColumnName("TaxIdentificationNumber");
 
                     b.HasKey("PersonID");
 

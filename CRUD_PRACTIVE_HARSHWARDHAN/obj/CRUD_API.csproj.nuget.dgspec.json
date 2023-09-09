@@ -1,0 +1,297 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/CRUD_PRACTIVE_HARSHWARDHAN/CRUD_API.csproj": {}
+  },
+  "projects": {
+    "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/CRUD_PRACTIVE_HARSHWARDHAN/CRUD_API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/CRUD_PRACTIVE_HARSHWARDHAN/CRUD_API.csproj",
+        "projectName": "CRUD_API",
+        "projectPath": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/CRUD_PRACTIVE_HARSHWARDHAN/CRUD_API.csproj",
+        "packagesPath": "/Users/mayankparihar/.nuget/packages/",
+        "outputPath": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/CRUD_PRACTIVE_HARSHWARDHAN/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/mayankparihar/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/sdk/7.0.307/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Entity/Entity.csproj": {
+                "projectPath": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Entity/Entity.csproj"
+              },
+              "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/ServiceContracts/ServiceContracts.csproj": {
+                "projectPath": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/ServiceContracts/ServiceContracts.csproj"
+              },
+              "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Services/Services.csproj": {
+                "projectPath": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Services/Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.307/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Entity/Entity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Entity/Entity.csproj",
+        "projectName": "Entity",
+        "projectPath": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Entity/Entity.csproj",
+        "packagesPath": "/Users/mayankparihar/.nuget/packages/",
+        "outputPath": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Entity/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/mayankparihar/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.307/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/ServiceContracts/ServiceContracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/ServiceContracts/ServiceContracts.csproj",
+        "projectName": "ServiceContracts",
+        "projectPath": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/ServiceContracts/ServiceContracts.csproj",
+        "packagesPath": "/Users/mayankparihar/.nuget/packages/",
+        "outputPath": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/ServiceContracts/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/mayankparihar/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Entity/Entity.csproj": {
+                "projectPath": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Entity/Entity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.307/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Services/Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Services/Services.csproj",
+        "projectName": "Services",
+        "projectPath": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Services/Services.csproj",
+        "packagesPath": "/Users/mayankparihar/.nuget/packages/",
+        "outputPath": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Services/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/mayankparihar/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Entity/Entity.csproj": {
+                "projectPath": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/Entity/Entity.csproj"
+              },
+              "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/ServiceContracts/ServiceContracts.csproj": {
+                "projectPath": "/Users/mayankparihar/dotnet/myPracticeForHarshwardhan/dotnet_rest_with_ef/ServiceContracts/ServiceContracts.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.307/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

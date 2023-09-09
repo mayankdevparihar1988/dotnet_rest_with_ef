@@ -12,7 +12,7 @@
 
 ## Running MYSQL Server on Docker
 
-```
+```bash
  docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourPassword123' -p 1433:1433 --name sql_server_container -d mcr.microsoft.com/mssql/server
  ``
 
@@ -49,4 +49,58 @@ Build started...
 Build succeeded.
 Specify --help for a list of available options and commands.
 Unrecognized command or argument 'database'
-mayankparihar@Mayanks-MacBook-Pro-2 Entity % dotnet ef database update  --startup-project ../CRUD_PRACTIVE_HARSHWARDHAN 
+mayankparihar@Mayanks-MacBook-Pro-2 Entity % dotnet ef database update  --startup-project ../CRUD_PRACTIVE_HARSHWARDHAN
+
+# Database constraints and defaults using Fluent API in DBCOntext class onModelCreating
+
+'''Bash
+
+ protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+			modelBuilder.Entity<Country>().ToTable("Countries");
+			modelBuilder.Entity<Person>().ToTable("Persons");
+
+
+			// Data Seeding
+
+			// Reading the jsonfiles
+
+			var CountryText = System.IO.File.ReadAllText("./sampleData/countries.json");
+			var CountryArray = System.Text.Json.JsonSerializer.Deserialize<List<Country>>(CountryText);
+
+            foreach (Country item in CountryArray!)
+			{
+                modelBuilder.Entity<Country>().HasData(item);
+            }
+
+
+            var PersonsText = System.IO.File.ReadAllText("./sampleData/persons.json");
+            var PersonsList = System.Text.Json.JsonSerializer.Deserialize<List<Person>>(PersonsText);
+
+            foreach (Person item in PersonsList!)
+            {
+                modelBuilder.Entity<Person>().HasData(item);
+            }
+
+            // Using Fluent API
+
+            modelBuilder.Entity<Person>().Property(property => property.TIN)
+                .HasColumnName("TaxIdentificationNumber")
+                .HasColumnType("varchar(10)")
+                .HasDefaultValue("ABISD882");
+
+            // Using Fluent API To Create Index
+
+            modelBuilder.Entity<Country>().HasIndex(item => item.CountryName).IsUnique();
+
+
+            // Using Fluent Constraint
+           // modelBuilder.Entity<Person>().ToTable(t => t.HasCheckConstraint("CHECK_TIN_LENGHTH", "len([TaxIdentificationNumber])=10"));
+            // modelBuilder.Entity<Person>().HasCheckConstraint("CHECK_TIN_LENGHTH", "len([TaxIdentificationNumber])=10");
+        }
+'''
+
+
+## EF Database Modeling
+
