@@ -6,9 +6,9 @@ namespace Entity
 {
 	public class PesonsDbContext : DbContext
 	{
-		public DbSet<Person> Persons { get; set; }
+		public virtual DbSet<Person> Persons { get; set; }
 
-		public DbSet<Country> Countries { get; set; }
+		public virtual DbSet<Country> Countries { get; set; }
 
 		public PesonsDbContext(DbContextOptions<PesonsDbContext> options) : base(options)
 		{

@@ -104,3 +104,10 @@ mayankparihar@Mayanks-MacBook-Pro-2 Entity % dotnet ef database update  --startu
 
 ## EF Database Modeling
 
+
+
+
+## Database Testing using Moq Framework
+
+* install Moq framework
+* install EntityFramworkCoreMock.Moq
